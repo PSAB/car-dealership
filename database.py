@@ -31,6 +31,7 @@ def view():
     return rows
 
 create_table()
+
 insert('Toyota', 'Camry', 2019)
 insert('Toyota', '4Runner', 2019)
 insert('Toyota', 'Camry', 2019)
