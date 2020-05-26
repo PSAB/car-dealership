@@ -5,6 +5,10 @@ window = Tk()
 
 def print_thing():
     print(e1_value.get())
+    # Delete previous text from t1:
+    t1.delete(1.0, END)
+    # Insert entry text into t1:
+    t1.insert(END, e1_value.get())
 
 # Add execute button widget
 b1 = Button(window, text="Execute", command = print_thing)
