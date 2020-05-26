@@ -20,6 +20,13 @@ def insert(make, model, year):
     conn.commit()
     conn.close()
 
+def delete(value, condition):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute("DELETE FROM Cars WHERE {} = '{}'".format(value, condition))
+    conn.commit()
+    conn.close()
+
 def view():
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
@@ -32,8 +39,10 @@ def view():
 
 create_table()
 
-insert('Toyota', 'Camry', 2019)
-insert('Toyota', '4Runner', 2019)
-insert('Toyota', 'Camry', 2019)
-insert('Toyota', 'Camry', 2019)
+# insert('Toyota', 'Camry', 2019)
+# insert('Toyota', '4Runner', 2019)
+# insert('Toyota', 'Camry', 2019)
+# insert('Toyota', 'Camry', 2019)
+
+delete('model', '4Runner')
 # print(view())
