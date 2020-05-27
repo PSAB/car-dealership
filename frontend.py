@@ -2,6 +2,7 @@ from tkinter import *
 
 # Create empty window
 window = Tk()
+window.title("Dealership Application")
 
 def print_thing():
     # Delete previous text from t1:
