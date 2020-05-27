@@ -22,12 +22,21 @@ def insert_car(make, model, year, fuel_type, list_price, miles, category):
     conn.commit()
     conn.close()
 
-def delete(value, condition):
+def edit_car(value, new_condition, cid):
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
-    cur.execute("DELETE FROM Cars WHERE {} = '{}'".format(value, condition))
+    cur.execute(f"UPDATE Cars SET {value} = {new_condition} WHERE cid = '{cid}'")
     conn.commit()
     conn.close()
+
+def delete_car(cid):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute(f"DELETE FROM Cars WHERE cid = '{cid}'")
+    conn.commit()
+    conn.close()
+
+
 
 def view():
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
@@ -51,9 +60,10 @@ def sample():
 
 # sample()
 # create_table()
-
 # insert_car('Toyota', 'Supra', 2020, 'Gas', 49995, 7, 'Sport')
-insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
+# insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
+# edit_car('list_price', 40599, 2)
+# delete_car(3)
 
 # delete('model', '4Runner')
 # print(view())
