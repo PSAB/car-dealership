@@ -61,6 +61,16 @@ def delete_employee(essn):
     conn.commit()
     conn.close()
 
+# New Sale Section
+
+def new_sale(bssn, insurance, name, price, purchase_date, payment_type, payment, cid, essn, commission):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute(f"INSERT INTO Buyer(bssn, insurance, name) VALUES ({bssn}, '{insurance}', '{name}')")
+    cur.execute(f"UPDATE Cars SET commission = {commission}, purchase_date = to_date('{purchase_date}', 'YYYY-MM-DD'), payment_type = '{payment_type}', price = {price}, payment = {payment}, bssn = {bssn}, essn = {essn}  WHERE cid = {cid}")
+    conn.commit()
+    conn.close()
+
 def view():
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
@@ -92,6 +102,7 @@ def sample():
 # insert_employee(333356789, 'Guy Duncan', 85150.64)
 # edit_employee('salary', 75150.84, 123456789)
 # delete_employee(111156789)
+new_sale(987654321, 'Geico', 'Pavan Sabnis', 50150, '2020-05-27', 'Loan', 300, 1, 333356789, 280)
 
 # delete('model', '4Runner')
 # print(view())
