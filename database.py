@@ -15,6 +15,8 @@ def create_table():
     # Close connection
     conn.close()
 
+# Car Section
+
 def insert_car(make, model, year, fuel_type, list_price, miles, category):
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
@@ -36,7 +38,28 @@ def delete_car(cid):
     conn.commit()
     conn.close()
 
+# Employee Section
 
+def insert_employee(essn, name, salary):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute(f"INSERT INTO Employee(essn, name, salary) VALUES ({essn}, '{name}', {salary})")
+    conn.commit()
+    conn.close()
+
+def edit_employee(value, new_condition, essn):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute(f"UPDATE Employee SET {value} = {new_condition} WHERE essn = '{essn}'")
+    conn.commit()
+    conn.close()
+
+def delete_employee(essn):
+    conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
+    cur = conn.cursor()
+    cur.execute(f"DELETE FROM Employee WHERE essn = '{essn}'")
+    conn.commit()
+    conn.close()
 
 def view():
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
@@ -64,6 +87,11 @@ def sample():
 # insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
 # edit_car('list_price', 40599, 2)
 # delete_car(3)
+# insert_employee(123456789, 'Joe Smith', 70150.54)
+# insert_employee(111156789, 'Billy Bob', 80150.84)
+# insert_employee(333356789, 'Guy Duncan', 85150.64)
+# edit_employee('salary', 75150.84, 123456789)
+# delete_employee(111156789)
 
 # delete('model', '4Runner')
 # print(view())
