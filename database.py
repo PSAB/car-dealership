@@ -15,10 +15,10 @@ def create_table():
     # Close connection
     conn.close()
 
-def insert(make, model, year):
+def insert_car(make, model, year, fuel_type, list_price, miles, category):
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
-    cur.execute("INSERT INTO Cars(make, model, year) VALUES ('{}', '{}', {})".format(make, model, year))
+    cur.execute(f"INSERT INTO Cars(make, model, year, fuel_type, list_price, miles, category) VALUES ('{make}', '{model}', {year}, '{fuel_type}', {list_price}, {miles}, '{category}')")
     conn.commit()
     conn.close()
 
@@ -50,12 +50,10 @@ def sample():
 
 
 # sample()
-create_table()
+# create_table()
 
-# insert('Toyota', 'Camry', 2019)
-# insert('Toyota', '4Runner', 2019)
-# insert('Toyota', 'Camry', 2019)
-# insert('Toyota', 'Camry', 2019)
+# insert_car('Toyota', 'Supra', 2020, 'Gas', 49995, 7, 'Sport')
+insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
 
 # delete('model', '4Runner')
 # print(view())
