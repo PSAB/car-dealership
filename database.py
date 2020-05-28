@@ -71,6 +71,8 @@ def new_sale(bssn, insurance, name, price, purchase_date, payment_type, payment,
     conn.commit()
     conn.close()
 
+# Misc
+
 def view():
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
@@ -95,6 +97,7 @@ def sample():
 # create_table()
 # insert_car('Toyota', 'Supra', 2020, 'Gas', 49995, 7, 'Sport')
 # insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
+# insert_car('Chevrolet', 'Corvette', 2020, 'Gas', 55999, 4, 'Sport')
 # edit_car('list_price', 40599, 2)
 # delete_car(3)
 # insert_employee(123456789, 'Joe Smith', 70150.54)
@@ -102,7 +105,7 @@ def sample():
 # insert_employee(333356789, 'Guy Duncan', 85150.64)
 # edit_employee('salary', 75150.84, 123456789)
 # delete_employee(111156789)
-new_sale(987654321, 'Geico', 'Pavan Sabnis', 50150, '2020-05-27', 'Loan', 300, 1, 333356789, 280)
+new_sale(987444321, 'Geico', 'James Fieri', 58999, '2020-05-27', 'Loan', 300, 4, 333356789, 280)
 
 # delete('model', '4Runner')
 # print(view())
