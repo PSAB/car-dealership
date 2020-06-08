@@ -105,7 +105,7 @@ def sample():
 # insert_employee(333356789, 'Guy Duncan', 85150.64)
 # edit_employee('salary', 75150.84, 123456789)
 # delete_employee(111156789)
-new_sale(987444321, 'Geico', 'James Fieri', 58999, '2020-05-27', 'Loan', 300, 4, 333356789, 280)
+# new_sale(987334321, 'Geico', 'S Desh', 58999, '2020-05-27', 'Loan', 300, 2, 333356789, 280)
 
 # delete('model', '4Runner')
 # print(view())
