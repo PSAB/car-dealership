@@ -196,4 +196,44 @@ t1.config(state='disabled')
 b1 = Button(window, text="Submit Sale", command = print_thing)
 b1.grid(row = 11, column = 0)
 
+# sale operation
+sale_bssn = EntryWithPlaceholder(window, placeholder='bssn')
+sale_bssn.grid(row = 11, column = 1)
+
+# sale operation
+sale_insurance = EntryWithPlaceholder(window, placeholder='insurance')
+sale_insurance.grid(row = 11, column = 2)
+
+# sale operation
+sale_name = EntryWithPlaceholder(window, placeholder='name')
+sale_name.grid(row = 11, column = 3)
+
+# sale operation
+sale_price = EntryWithPlaceholder(window, placeholder='price')
+sale_price.grid(row = 11, column = 4)
+
+# sale operation
+sale_purchase_date = EntryWithPlaceholder(window, placeholder='date (yyyy-mm-dd)')
+sale_purchase_date.grid(row = 11, column = 5)
+
+# sale operation
+sale_payment_type = EntryWithPlaceholder(window, placeholder='payment type')
+sale_payment_type.grid(row = 11, column = 6)
+
+# sale operation
+sale_payment = EntryWithPlaceholder(window, placeholder='payment')
+sale_payment.grid(row = 11, column = 7)
+
+# sale operation
+sale_cid = EntryWithPlaceholder(window, placeholder='cid')
+sale_cid.grid(row = 12, column = 1)
+
+# sale operation
+sale_essn = EntryWithPlaceholder(window, placeholder='essn')
+sale_essn.grid(row = 12, column = 2)
+
+# sale operation
+sale_commission = EntryWithPlaceholder(window, placeholder='commission')
+sale_commission.grid(row = 12, column = 3)
+
 window.mainloop()
