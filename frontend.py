@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter as tk
 import tkinter.ttk as ttk
+import database
 
 class EntryWithPlaceholder(tk.Entry):
     def __init__(self, master=None, placeholder="PLACEHOLDER", color='grey'):
@@ -35,10 +36,27 @@ window.title("Dealership Application")
 
 def print_thing():
     print(car_insert_make.get() + ' ' + car_insert_model.get())
-    # Delete previous text from t1:
-    # t1.delete(1.0, END)
-    # Insert entry text into t1:
-    # t1.insert(END, e1_value.get())
+    
+def submit_car():
+    database.insert_car(car_insert_make.get(), car_insert_model.get(), car_insert_year.get(), car_insert_fuel.get(), car_insert_list_price.get(), car_insert_miles.get(), car_insert_category.get())
+
+def edit_car():
+    database.edit_car(car_edit_value, car_edit_new_condition, car_edit_cid)
+
+def delete_car():
+    database.delete_car(car_delete_value)
+
+def submit_employee():
+    database.insert_employee(employee_insert_essn, employee_insert_name, employee_insert_salary)
+
+def edit_employee():
+    database.edit_employee(employee_edit_value, employee_edit_new_condition, employee_edit_essn)
+
+def delete_employee():
+    database.delete_employee(employee_delete_essn)
+
+def submit_sale():
+    database.new_sale(sale_bssn, sale_insurance, sale_name, sale_price, sale_purchase_date, sale_payment_type, sale_payment, sale_cid, sale_essn, sale_commission)
 
 # # Add text widget
 t1 = Text(window, height = 1, width = 20)
@@ -47,8 +65,8 @@ t1.insert(END, 'INSERT CAR:')
 t1.config(state='disabled')
 
 # Add execute button widget
-b1 = Button(window, text="Submit car", command = print_thing)
-b1.grid(row = 1, column = 0)
+submit_car_button = Button(window, text="Submit car", command = submit_car)
+submit_car_button.grid(row = 1, column = 0)
 
 # Add make text entry widget for insert operation
 car_insert_make = EntryWithPlaceholder(window, placeholder='make')
@@ -85,8 +103,8 @@ t1.insert(END, 'EDIT CAR:')
 t1.config(state='disabled')
 
 # Add execute button widget
-b1 = Button(window, text="Edit car", command = print_thing)
-b1.grid(row = 3, column = 0)
+edit_car_button = Button(window, text="Edit car", command = edit_car)
+edit_car_button.grid(row = 3, column = 0)
 
 # Add value type text entry widget for edit operation
 car_edit_value = EntryWithPlaceholder(window, placeholder='value')
@@ -107,8 +125,8 @@ t1.insert(END, 'DELETE CAR:')
 t1.config(state='disabled')
 
 # Add execute button widget
-b1 = Button(window, text="Delete car", command = print_thing)
-b1.grid(row = 3, column = 4)
+delete_car_button = Button(window, text="Delete car", command = delete_car)
+delete_car_button.grid(row = 3, column = 4)
 
 # Add value type text entry widget for delete operation
 car_delete_value = EntryWithPlaceholder(window, placeholder='cid')
@@ -124,8 +142,8 @@ t1.insert(END, 'INSERT EMPLOYEE:')
 t1.config(state='disabled')
 
 # Add execute button widget
-b1 = Button(window, text="Submit Employee", command = print_thing)
-b1.grid(row = 6, column = 0)
+submit_employee_button = Button(window, text="Submit Employee", command = submit_employee)
+submit_employee_button.grid(row = 6, column = 0)
 
 # Add essn type text entry widget for insert operation
 employee_insert_essn = EntryWithPlaceholder(window, placeholder='essn')
@@ -156,8 +174,8 @@ employee_edit_salary = EntryWithPlaceholder(window, placeholder='salary')
 employee_edit_salary.grid(row = 6, column = 3)
 
 # Add execute button widget
-b1 = Button(window, text="Edit Employee", command = print_thing)
-b1.grid(row = 8, column = 0)
+edit_employee_button = Button(window, text="Edit Employee", command = print_thing)
+edit_employee_button.grid(row = 8, column = 0)
 
 # Add value type text entry widget for edit operation
 employee_edit_value = EntryWithPlaceholder(window, placeholder='value')
@@ -172,16 +190,12 @@ employee_edit_essn = EntryWithPlaceholder(window, placeholder='essn')
 employee_edit_essn.grid(row = 8, column = 3)
 
 # Add execute button widget
-b1 = Button(window, text="Edit Employee", command = print_thing)
-b1.grid(row = 8, column = 0)
-
-# Add execute button widget
-b1 = Button(window, text="Delete Employee", command = print_thing)
-b1.grid(row = 8, column = 4)
+delete_employee_button = Button(window, text="Delete Employee", command = print_thing)
+delete_employee_button.grid(row = 8, column = 4)
 
 # Add essn type text entry widget for delete operation
-employee_edit_essn = EntryWithPlaceholder(window, placeholder='essn')
-employee_edit_essn.grid(row = 8, column = 5)
+employee_delete_essn = EntryWithPlaceholder(window, placeholder='essn')
+employee_delete_essn.grid(row = 8, column = 5)
 
 # separator
 ttk.Separator(window, orient=HORIZONTAL).grid(row=9, columnspan = 100, sticky = "ew")
@@ -193,8 +207,8 @@ t1.insert(END, 'NEW SALE:')
 t1.config(state='disabled')
 
 # Add execute button widget
-b1 = Button(window, text="Submit Sale", command = print_thing)
-b1.grid(row = 11, column = 0)
+submit_sale_button = Button(window, text="Submit Sale", command = print_thing)
+submit_sale_button.grid(row = 11, column = 0)
 
 # sale operation
 sale_bssn = EntryWithPlaceholder(window, placeholder='bssn')
