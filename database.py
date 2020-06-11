@@ -43,6 +43,9 @@ def delete_car(cid):
 def insert_employee(essn, name, salary, status):
     conn = psycopg2.connect(f"dbname={credentials.dbname} user={credentials.user} password={credentials.password} host={credentials.host} port={credentials.port}")
     cur = conn.cursor()
+    print()
+    print((essn, name, salary, status))
+    print()
     cur.execute(f"INSERT INTO Employee(essn, name, salary, status) VALUES ({essn}, '{name}', {salary}, '{status}')")
     conn.commit()
     conn.close()
@@ -94,7 +97,7 @@ def sample():
 
 
 # sample()
-# create_table()
+create_table()
 # insert_car('Toyota', 'Supra', 2020, 'Gas', 49995, 7, 'Sport')
 # insert_car('Toyota', '4Runner', 2018, 'Gas', 42995, 13266, 'Sport')
 # insert_car('Chevrolet', 'Corvette', 2020, 'Gas', 55999, 4, 'Sport')

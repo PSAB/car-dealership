@@ -47,6 +47,7 @@ def delete_car():
     database.delete_car(car_delete_value.get())
 
 def submit_employee():
+    # print("EMPLOYEE SALARY: " + employee_insert_salary.get())
     database.insert_employee(employee_insert_essn.get(), employee_insert_name.get(), employee_insert_salary.get(), employee_insert_status.get())
 
 def edit_employee():
@@ -146,10 +147,6 @@ t1.config(state='disabled')
 submit_employee_button = Button(window, text="Submit Employee", command = submit_employee)
 submit_employee_button.grid(row = 6, column = 0)
 
-# Add status type text entry widget for insert operation
-employee_insert_status = EntryWithPlaceholder(window, placeholder='status')
-employee_insert_status.grid(row = 6, column = 4)
-
 # Add essn type text entry widget for insert operation
 employee_insert_essn = EntryWithPlaceholder(window, placeholder='essn')
 employee_insert_essn.grid(row = 6, column = 1)
@@ -162,6 +159,10 @@ employee_insert_name.grid(row = 6, column = 2)
 employee_insert_salary = EntryWithPlaceholder(window, placeholder='salary')
 employee_insert_salary.grid(row = 6, column = 3)
 
+# Add status type text entry widget for insert operation
+employee_insert_status = EntryWithPlaceholder(window, placeholder='status')
+employee_insert_status.grid(row = 6, column = 4)
+
 # # Add text widget to edit employee
 t1 = Text(window, height = 1, width = 20)
 t1.grid(row = 7, column = 0)
@@ -173,10 +174,6 @@ t1 = Text(window, height = 1, width = 20)
 t1.grid(row = 7, column = 4)
 t1.insert(END, 'DELETE EMPLOYEE:')
 t1.config(state='disabled')
-
-# Add salary type text entry widget for insert operation
-employee_edit_salary = EntryWithPlaceholder(window, placeholder='salary')
-employee_edit_salary.grid(row = 6, column = 3)
 
 # Add execute button widget
 edit_employee_button = Button(window, text="Edit Employee", command = edit_employee)
