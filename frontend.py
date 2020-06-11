@@ -41,22 +41,23 @@ def submit_car():
     database.insert_car(car_insert_make.get(), car_insert_model.get(), car_insert_year.get(), car_insert_fuel.get(), car_insert_list_price.get(), car_insert_miles.get(), car_insert_category.get())
 
 def edit_car():
-    database.edit_car(car_edit_value, car_edit_new_condition, car_edit_cid)
+    database.edit_car(car_edit_value.get(), car_edit_new_condition.get(), car_edit_cid.get())
 
 def delete_car():
-    database.delete_car(car_delete_value)
+    database.delete_car(car_delete_value.get())
 
 def submit_employee():
-    database.insert_employee(employee_insert_essn, employee_insert_name, employee_insert_salary)
+    database.insert_employee(employee_insert_essn.get(), employee_insert_name.get(), employee_insert_salary.get(), employee_insert_status.get())
 
 def edit_employee():
-    database.edit_employee(employee_edit_value, employee_edit_new_condition, employee_edit_essn)
+    database.edit_employee(employee_edit_value.get(), employee_edit_new_condition.get(), employee_edit_essn.get())
 
 def delete_employee():
-    database.delete_employee(employee_delete_essn)
+    database.delete_employee(employee_delete_essn.get())
 
 def submit_sale():
-    database.new_sale(sale_bssn, sale_insurance, sale_name, sale_price, sale_purchase_date, sale_payment_type, sale_payment, sale_cid, sale_essn, sale_commission)
+    # print(sale)
+    database.new_sale(sale_bssn.get(), sale_insurance.get(), sale_name.get(), sale_price.get(), sale_purchase_date.get(), sale_payment_type.get(), sale_payment.get(), sale_cid.get(), sale_essn.get(), sale_commission.get())
 
 # # Add text widget
 t1 = Text(window, height = 1, width = 20)
@@ -145,6 +146,10 @@ t1.config(state='disabled')
 submit_employee_button = Button(window, text="Submit Employee", command = submit_employee)
 submit_employee_button.grid(row = 6, column = 0)
 
+# Add status type text entry widget for insert operation
+employee_insert_status = EntryWithPlaceholder(window, placeholder='status')
+employee_insert_status.grid(row = 6, column = 4)
+
 # Add essn type text entry widget for insert operation
 employee_insert_essn = EntryWithPlaceholder(window, placeholder='essn')
 employee_insert_essn.grid(row = 6, column = 1)
@@ -174,7 +179,7 @@ employee_edit_salary = EntryWithPlaceholder(window, placeholder='salary')
 employee_edit_salary.grid(row = 6, column = 3)
 
 # Add execute button widget
-edit_employee_button = Button(window, text="Edit Employee", command = print_thing)
+edit_employee_button = Button(window, text="Edit Employee", command = edit_employee)
 edit_employee_button.grid(row = 8, column = 0)
 
 # Add value type text entry widget for edit operation
@@ -190,7 +195,7 @@ employee_edit_essn = EntryWithPlaceholder(window, placeholder='essn')
 employee_edit_essn.grid(row = 8, column = 3)
 
 # Add execute button widget
-delete_employee_button = Button(window, text="Delete Employee", command = print_thing)
+delete_employee_button = Button(window, text="Delete Employee", command = delete_employee)
 delete_employee_button.grid(row = 8, column = 4)
 
 # Add essn type text entry widget for delete operation
@@ -207,7 +212,7 @@ t1.insert(END, 'NEW SALE:')
 t1.config(state='disabled')
 
 # Add execute button widget
-submit_sale_button = Button(window, text="Submit Sale", command = print_thing)
+submit_sale_button = Button(window, text="Submit Sale", command = submit_sale)
 submit_sale_button.grid(row = 11, column = 0)
 
 # sale operation
